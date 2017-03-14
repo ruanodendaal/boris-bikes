@@ -12,7 +12,7 @@ Verbs in the User Stories
 * Bike is working?
 
 | **Objects** | **Messages** |
-|----------------------------|
+|-------------|---------------|
 | User            |                 |
 | Customer        | find_by_surname |
 | Person          | use_a_bike      |
