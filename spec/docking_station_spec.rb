@@ -26,7 +26,8 @@ describe DockingStation do
   end
 
   it 'raise error when the docking station is full' do
-    expect { subject.dock_bike(@bike) }.to raise_error "Docking station full"
+    subject.dock_bike(Bike.new)
+    expect { subject.dock_bike(Bike.new) }.to raise_error "Docking station full"
   end
 
 end
