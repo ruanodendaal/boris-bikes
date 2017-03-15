@@ -8,27 +8,27 @@ describe DockingStation do
    expect(bike).to be_working
   end
 
+
   describe '#dock_bike' do
 
-  it { is_expected.to respond_to(:dock_bike).with(1).argument }
+    it { is_expected.to respond_to(:dock_bike).with(1).argument }
+    it { is_expected.to respond_to(:stored_bikes) }
 
-  it { is_expected.to respond_to(:bike) }
+    it 'docks something' do
+      bike = Bike.new
+      expect(subject.dock_bike(bike)).to eq [bike]
+    end
 
-  it 'docks something' do
-    bike = Bike.new
-    expect(subject.dock_bike(bike)).to eq bike
-  end
+    it 'returns docked bikes' do
+      bike = Bike.new
+      subject.dock_bike(bike)
+      expect(subject.stored_bikes).to eq [bike]
+    end
 
-  it 'returns docked bikes' do
-    bike = Bike.new
-    subject.dock_bike(bike)
-    expect(subject.bike).to eq bike
-  end
-
-  it 'raise error when the docking station is full' do
-    subject.dock_bike(Bike.new)
-    expect { subject.dock_bike(Bike.new) }.to raise_error "Docking station full"
-  end
+    it 'raise error when the docking station is full' do
+      20.times { subject.dock_bike Bike.new }
+      expect { subject.dock_bike Bike.new }.to raise_error "Docking station full"
+    end
 
 end
 
