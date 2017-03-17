@@ -19,7 +19,6 @@ describe Van do
     station.dock(bike1)
     station.dock(bike2)
     array = station.dock(bike3)
-
     expect(subject.take_broken_bikes(array)).to eq [bike1, bike2]
   end
 
