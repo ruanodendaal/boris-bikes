@@ -61,7 +61,7 @@ describe DockingStation do
     end
 
     it "does not release broken bikes" do
-      allow(bike).to receive_messages(:broken? => true, :report_broken => true)
+      allow(bike).to receive_messages(broken?: true, report_broken: true)
       subject.dock bike
       expect{ subject.release_bike}.to raise_error "This bike is broken"
     end
